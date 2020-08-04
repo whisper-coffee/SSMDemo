@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
-    <!--将指定类配置给Spring，让Spring创建其对象实例-->
-    <bean id="UserDao" class="com.ssm.ioc_di.Impl.UserDaoImpl"/>
-    <bean id="UserService" class="com.ssm.ioc_di.Impl.UserServiceImpl">
-        <property name="UserDao" ref="UserDao"/>
-    </bean>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+    <!-- IoC & DI 练习-->
+        <!--将指定类配置给Spring，让Spring创建其对象实例-->
+        <bean id="UserDao" class="com.ssm.ioc_di.Impl.UserDaoImpl"/>
+        <bean id="UserService" class="com.ssm.ioc_di.Impl.UserServiceImpl">
+            <property name="UserDao" ref="UserDao"/>
+        </bean>
+    <!-- Spring 中的 Bean -->
+        <!--bean作用域为 singleton 和 prototypes -->
+        <bean id="scopeSingleton" class="com.ssm.bean.Scope" scope="singleton"/>
+        <bean id="scopePrototype" class="com.ssm.bean.Scope" scope="prototype"/>
+        <!--基于 xml 装配 Bean -->
+        <bean id="user1" class="com.ssm.bean.XmlBeanUser">
+            <constructor-arg index="0" value="ckevin"/>
+            <constructor-arg index="1" value="123456"/>
+            <constructor-arg index="2">
+                <list>
+                    <value>"constructor value1"</value>
+                    <value>"constructor value2"</value>
+                </list>
+            </constructor-arg>
+        </bean>
+        <bean id="user2" class="com.ssm.bean.XmlBeanUser">
+            <constructor-arg index="0" value="alice"/>
+            <constructor-arg index="1" value="alice"/>
+            <constructor-arg index="2">
+                <list>
+                    <value>"list value1"</value>
+                    <value>"list value2"</value>
+                </list>
+            </constructor-arg>
+        </bean>
 </beans>
