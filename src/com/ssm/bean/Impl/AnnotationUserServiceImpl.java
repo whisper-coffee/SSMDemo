@@ -11,6 +11,12 @@ import javax.annotation.Resource;
 public class AnnotationUserServiceImpl implements AnnotationUserService {
     @Resource(name="annotationUserDao")
     private AnnotationUserDao annotationUserDao;
+
+    //自动装配需要用到 setter() 方法
+    public void setAnnotationUserDao(AnnotationUserDao annotationUserDao){
+        this.annotationUserDao = annotationUserDao;
+    }
+
     public void save(){
         this.annotationUserDao.save();
         System.out.println("执行annotationUserService.save()");

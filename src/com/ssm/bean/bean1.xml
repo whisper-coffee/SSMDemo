@@ -14,6 +14,12 @@
         <bean id="annotationUserService" class="com.ssm.bean.Impl.AnnotationUserServiceImpl"/>
         <bean id="annotationUserController" class="com.ssm.bean.Controller.AnnotationUserController"/>
     -->
-    <!-- 配置方式二：使用 context 命名空间通知 Spring 扫描指定包下所有的 Bean 类，进行注解解析-->
-    <context:component-scan base-package="com.ssm.bean"/>
+    <!--
+        //配置方式二：使用 context 命名空间通知 Spring 扫描指定包下所有的 Bean 类，进行注解解析
+        <context:component-scan base-package="com.ssm.bean"/>
+    -->
+    <!--autowire 自动装配-->
+    <bean id="annotationUserDao" class="com.ssm.bean.Impl.AnnotationUserDaoImpl"/>
+    <bean id="annotationUserService" class="com.ssm.bean.Impl.AnnotationUserServiceImpl" autowire="byName"/>
+    <bean id="annotationUserController" class="com.ssm.bean.Controller.AnnotationUserController" autowire="byName"/>
 </beans>

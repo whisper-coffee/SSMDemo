@@ -4,4 +4,6 @@
 ## 2nd day
 - Bean Scope (singleton、prototype)
 - XMLBeanTest (applicationContext - \<bean\>)
-- AnnotationBeanTest (@Repository、@Service、@Controller)&\<context:component-scan...\>
+- AnnotationBeanTest (@Repository、@Service、@Controller)&\<context:component-scan...\>)
+## 3rd day
+- Bean autowire
