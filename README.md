@@ -7,3 +7,6 @@
 - AnnotationBeanTest (@Repository¡¢@Service¡¢@Controller)&\<context:component-scan...\>)
 ## 3rd day
 - Bean autowire
+## 4th day
+- Aop-AspectJ
+- AspectJ Based on XML 

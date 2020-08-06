@@ -8,7 +8,7 @@ public class AnnotationBeanTest {
 
     public static void main(String[] args) {
 
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("com/ssm/bean/bean1.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("com/ssm/bean/config/applicationContext.xml");
 
         AnnotationUserController annotationUserController = (AnnotationUserController)applicationContext.getBean("annotationUserController");
         annotationUserController.save();
