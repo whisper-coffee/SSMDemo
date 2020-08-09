@@ -1,7 +1,9 @@
 package com.ssm.aspectj.Impl;
 
 import com.ssm.aspectj.Dao.UserDao;
+import org.springframework.stereotype.Repository;
 
+@Repository("userDao")
 public class UserDaoImpl implements UserDao{
     @Override
     public void addUser(){

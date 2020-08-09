@@ -6,15 +6,25 @@
         http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+    <!--目标类-->
     <bean id="userDao" class="com.ssm.aspectj.Impl.UserDaoImpl"/>
+    <!--切面-->
     <bean id="myXMLAspect" class="com.ssm.aspectj.MyXMLAspectJ"/>
+    <!-- aop 编程-->
     <aop:config>
+        <!--配置切面-->
         <aop:aspect id="aspect" ref="myXMLAspect">
+            <!--配置切入点-->
             <aop:pointcut expression="execution(* com.ssm.aspectj.Dao.*.*(..))" id="myPointCut"/>
+            <!--前置通知-->
             <aop:before method="myBefore" pointcut-ref="myPointCut"/>
+            <!--后置通知-->
             <aop:after-returning method="myAfterReturning" pointcut-ref="myPointCut"/>
+            <!--环绕通知-->
             <aop:around method="myAround" pointcut-ref="myPointCut"/>
+            <!--异常通知-->
             <aop:after-throwing method="myAfterThrowing" pointcut-ref="myPointCut" throwing="e"/>
+            <!--最终通知-->
             <aop:after method="myAfter" pointcut-ref="myPointCut"/>
         </aop:aspect>
     </aop:config>

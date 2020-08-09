@@ -4,13 +4,12 @@ import com.ssm.aspectj.Dao.UserDao;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class  xmlAspectTest {
+public class annotationAspectJTest {
     public static void main(String[] args) {
-        String xmlPath = "com/ssm/aspectj/config/applicationContextXML.xml";
+        String xmlPath = "com/ssm/aspectj/config/applicationContextAnnotation.xml";
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext(xmlPath);
-
+        //Ö´ÐÐË³Ðò£ºAround - Before - After - After-Returning
         UserDao userDao = (UserDao)applicationContext.getBean("userDao");
         userDao.addUser();
-        userDao.deleteUser();
     }
 }
