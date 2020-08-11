@@ -1,21 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
-    <!--配置数据源-->
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+    <!--1.配置数据源-->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <!--配置数据库驱动-->
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <!--链接数据库的 url -->
         <property name="url" value="jdbc:mysql://localhost:3306/db_spring?useSSL=false"/>
+        <!--连接数据库的用户名-->
         <property name="username" value="root"/>
+        <!--连接数据库的密码-->
         <property name="password" value="123456"/>
     </bean>
-    <!--配置JDBC模板-->
+    <!--2.配置JDBC模板-->
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <!--默认必须使用数据源-->
         <property name="dataSource" ref="dataSource"/>
     </bean>
-    <!--配置注入类-->
+    <!--3.配置注入类-->
     <bean id="userDao" class="com.ssm.jdbc.Dao.Impl.UserDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
+    <!--4.事务管理器，依赖于数据源-->
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--5.编写通知-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="*" propagation="REQUIRED" isolation="DEFAULT" read-only="false"/>
+        </tx:attributes>
+    </tx:advice>
+    <!--6.编写 aop ，让 spring 自动对目标生成代理，需要使用 AspectJ 的表达式-->
+    <aop:config>
+        <!--切入点 注：切入点，事务需要发生的实现类（Impl）-->
+        <aop:pointcut expression="execution(* com.ssm.jdbc.Dao.Impl.*.*(..))" id="txPointCut"/>
+        <!--切面-->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
+    </aop:config>
 </beans>

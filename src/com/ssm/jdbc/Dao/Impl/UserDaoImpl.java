@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 import java.util.List;
 
 public class UserDaoImpl implements UserDao {
+
     private JdbcTemplate jdbcTemplate;
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
@@ -59,5 +60,15 @@ public class UserDaoImpl implements UserDao {
         return this.jdbcTemplate.query(sql,rowMapper);
     }
 
+    //在正常运行时，先接收积分，但是因为异常未赠送出去，在事务控制中，出现异常前后应该保持不变
+    @Override
+    public void transfer(String outUser, String inUser, Integer jf) {
+        //接收积分
+        this.jdbcTemplate.update("update user set jf=jf+? where username=?",jf,inUser);
+        //模拟系统运行异常
+        int i = 1/0;
+        //赠送积分
+        this.jdbcTemplate.update("update user set jf=jf+? where username=?",jf,outUser);
+    }
 
 }

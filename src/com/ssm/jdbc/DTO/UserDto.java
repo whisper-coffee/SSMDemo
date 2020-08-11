@@ -4,6 +4,7 @@ public class UserDto {
     private Integer id;
     private String username;
     private String password;
+    private Integer jf;
 
     public Integer getId() {
         return id;
@@ -27,6 +28,14 @@ public class UserDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getJf() {
+        return jf;
+    }
+
+    public void setJf(Integer jf) {
+        this.jf = jf;
     }
 
     public String toString(){

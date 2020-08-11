@@ -10,4 +10,6 @@ public interface UserDao {
     int deleteUser(int id);
     UserDto selectById(int id);
     List<UserDto> selectAllUser();
+    //ÔùËÍ»ı·Ö
+    void transfer(String outUser, String inUser, Integer jf);
 }

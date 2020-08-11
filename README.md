@@ -14,3 +14,5 @@
 - AspectJ Based on Annotation
 ## 6th day 
 - Spring JdbcTemplate(execute() , update() , query())
+## 7th day
+- Spring Transaction Based on XML
