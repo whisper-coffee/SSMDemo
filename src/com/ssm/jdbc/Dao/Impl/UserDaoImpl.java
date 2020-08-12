@@ -5,11 +5,16 @@ import com.ssm.jdbc.Dao.UserDao;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
-
+@Repository("userDao")//使用注解自动扫描需要加注解
 public class UserDaoImpl implements UserDao {
-
+    @Resource(name="jdbcTemplate")//使用注解自动扫描需要加注解
     private JdbcTemplate jdbcTemplate;
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
@@ -62,13 +67,14 @@ public class UserDaoImpl implements UserDao {
 
     //在正常运行时，先接收积分，但是因为异常未赠送出去，在事务控制中，出现异常前后应该保持不变
     @Override
+    @Transactional(propagation= Propagation.REQUIRED,isolation = Isolation.DEFAULT,readOnly = false)
     public void transfer(String outUser, String inUser, Integer jf) {
         //接收积分
         this.jdbcTemplate.update("update user set jf=jf+? where username=?",jf,inUser);
         //模拟系统运行异常
         int i = 1/0;
         //赠送积分
-        this.jdbcTemplate.update("update user set jf=jf+? where username=?",jf,outUser);
+        this.jdbcTemplate.update("update user set jf=jf-? where username=?",jf,outUser);
     }
 
 }

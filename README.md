@@ -16,3 +16,5 @@
 - Spring JdbcTemplate(execute() , update() , query())
 ## 7th day
 - Spring Transaction Based on XML
+## 8th day
+- Spring Transcation Based on Annotation
