@@ -18,3 +18,5 @@
 - Spring Transaction Based on XML
 ## 8th day
 - Spring Transcation Based on Annotation
+## 9th day
+- MyBatis Base-select

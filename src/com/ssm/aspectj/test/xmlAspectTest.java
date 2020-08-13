@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class  xmlAspectTest {
     public static void main(String[] args) {
-        String xmlPath = "com/ssm/aspectj/config/applicationContextXML.xml";
+        String xmlPath = "com/ssm/config/applicationContextAopXML.xml";
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext(xmlPath);
 
         UserDao userDao = (UserDao)applicationContext.getBean("userDao");

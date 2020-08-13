@@ -11,7 +11,7 @@ public class XmlTransactionTest {
     }
 
     public void xmlTest(){
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("com/ssm/jdbc/config/applicationContext.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("com/ssm/config/applicationContextJdbcXml.xml");
         UserDao userDao = (UserDao)applicationContext.getBean("userDao");
         userDao.transfer("zhangsan","lisi",500);
         System.out.println("赠送积分成功");

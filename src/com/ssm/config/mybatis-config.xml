@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--1.配置环境，默认的 id 为 mysql-->
+    <environments default="mysql">
+        <!--1.2配置 id 为 mysql 的数据库环境-->
+        <environment id="mysql">
+            <!--使用 JDBC 的事务管理-->
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/db_spring"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--2.配置 Mapper 的位置-->
+    <mappers>
+        <mapper resource="com/ssm/mybatis/mapper/UserMapper.xml"/>
+    </mappers>
+</configuration>
