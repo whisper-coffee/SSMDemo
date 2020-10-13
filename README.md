@@ -20,3 +20,5 @@
 - Spring Transcation Based on Annotation
 ## 9th day
 - MyBatis Base-select
+## 10th day
+- solve problems about log4j (finished)
