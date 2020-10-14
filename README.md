@@ -22,3 +22,5 @@
 - MyBatis Base-select
 ## 10th day
 - solve problems about log4j (finished)
+## 11th day
+- Mybatis Base-insert/update/delete

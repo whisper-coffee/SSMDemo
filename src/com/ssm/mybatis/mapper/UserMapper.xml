@@ -5,4 +5,16 @@
     <select id="selectUserById" parameterType="Integer" resultType="com.ssm.mybatis.po.User">
         select * from t_user where id = #{id}
     </select>
+    <select id="findUserByName" parameterType="String" resultType="com.ssm.mybatis.po.User">
+        select * from t_user where username like '%${value}%'
+    </select>
+    <insert id="insertUser" parameterType="com.ssm.mybatis.po.User">
+        insert into t_user(username,jobs,phone)values(#{username},#{jobs},#{phone})
+    </insert>
+    <update id="updateUser"  parameterType="com.ssm.mybatis.po.User">
+        update t_user set username = #{username},jobs = #{jobs},phone = #{phone} where id = #{id}
+    </update>
+    <delete id="deleteUser" parameterType="Integer">
+        delete from t_user where id = #{id}
+    </delete>
 </mapper>
