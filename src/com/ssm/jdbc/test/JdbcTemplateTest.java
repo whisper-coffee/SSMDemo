@@ -10,7 +10,7 @@ import java.util.List;
 
 public class JdbcTemplateTest {
     public static void main(String[] args) {
-        String xmlPath = "com/ssm/config/applicationContextJdbcXml.xml";
+        String xmlPath = "WebContent/resources/applicationContextJdbcXml.xml";
         //加载配置文件
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext(xmlPath);
         //获取 JdbcTemplate 实例

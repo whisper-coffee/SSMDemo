@@ -7,7 +7,7 @@ public class ScopeTest {
 
     public static void main(String[] args) {
 
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("com/ssm/config/applicationContextIoCAndDI.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("WebContent/resources/applicationContextIoCAndDI.xml");
         //单例（默认） 每次都是使用同一个实例
         System.out.println("singleton------------");
         System.out.println(applicationContext.getBean("scopeSingleton"));//com.ssm.bean.Scope@735b5592

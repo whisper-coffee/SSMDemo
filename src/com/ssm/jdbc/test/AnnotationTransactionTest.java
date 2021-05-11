@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class AnnotationTransactionTest {
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("com/ssm/config/applicationContextJdbcAnnotation.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("WebContent/resources/applicationContextJdbcAnnotation.xml");
         UserDao userDao = (UserDao)applicationContext.getBean("userDao");
         userDao.transfer("zhangsan","lisi",500);
     }

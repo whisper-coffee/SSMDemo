@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.util.List;
 
 import com.ssm.mybatis.po.User;
-import com.sun.org.apache.bcel.internal.generic.ATHROW;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -23,7 +22,7 @@ public class MyBatisTest {
     }
     public void selectUserById() throws Exception{
         //1.读取配置文件
-        String resource = "com/ssm/config/mybatis-config.xml";
+        String resource = "WebContent/resources/mybatis-config.xml";
         InputStream is = Resources.getResourceAsStream(resource);
         //2.根据配置文件构建 SqlSessionFactory
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
@@ -37,7 +36,7 @@ public class MyBatisTest {
     }
 
     public void findUserByName() throws Exception{
-        String resource = "com/ssm/config/mybatis-config.xml";
+        String resource = "WebContent/resources/mybatis-config.xml";
         InputStream is = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
         SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -53,7 +52,7 @@ public class MyBatisTest {
         user.setUsername("wanglaowu");
         user.setJobs("Maintainer");
         user.setPhone("15227889922");
-        String resource = "com/ssm/config/mybatis-config.xml";
+        String resource = "WebContent/resources/mybatis-config.xml";
         InputStream is = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
         SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -70,7 +69,7 @@ public class MyBatisTest {
         user.setUsername("wangwu");
         user.setJobs("developer");
         user.setPhone("10293847576");
-        String resource = "com/ssm/config/mybatis-config.xml";
+        String resource = "WebContent/resources/mybatis-config.xml";
         InputStream is = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
         SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -82,7 +81,7 @@ public class MyBatisTest {
     }
 
     public void deleteUser() throws Exception{
-        String resource = "com/ssm/config/mybatis-config.xml";
+        String resource = "WebContent/resources/mybatis-config.xml";
         InputStream is = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
         SqlSession sqlSession = sqlSessionFactory.openSession();
